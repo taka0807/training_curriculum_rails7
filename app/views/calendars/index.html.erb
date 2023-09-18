@@ -7,15 +7,21 @@
     <%= f.submit '保存' %>
   <% end %>
 
+</div>
+
+<div>
 
   <div class='calendar'>
     <% @week_days.each do |day| %>
+    <%# 7個繰り返し処理する。dayは全部の情報。月、日、予定。 %>
       <div class='item'>
         <div class='date'>
-          <% day[:month] %>/<% day[:date] %>
+          <%= day[:month] %>/<%= day[:date] %>/<%= day[:wdays]  %>
+          <%# ハッシュの為。manth のみ。 %>
         </div>
         <ul class='content'>
         <% if day[:plans].length != 0 %>
+        <%# 追加の予定があった場合。 %>
           <% day[:plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
           <% end %>
