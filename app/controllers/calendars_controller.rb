@@ -36,11 +36,11 @@ class CalendarsController < ApplicationController
       # 7回繰り返す。pushは[]に押し込む。 plan plan はplanの中のplan（出産）をtoday_planに入れる。
       # plan.dataは出産の日日付。と = だった場合、[]にpushで入れ込む。today_planに。
 
-     wday_num = Date.today.wday
+     wday_num = Date.today.wday + x
      if wday_num >= 7
       wday_num = wday_num -7
      end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday=> Date.today.wday}
+      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday => wdays[wday_num ] }
 
       @week_days.push(days)
 # これも繰り返し処理。7回。= { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday=> }　={はハッシュ　.manthは ～の9月。
