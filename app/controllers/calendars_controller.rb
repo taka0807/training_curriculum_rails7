@@ -37,10 +37,12 @@ class CalendarsController < ApplicationController
       # plan.dataは出産の日日付。と = だった場合、[]にpushで入れ込む。today_planに。
 
      wday_num = Date.today.wday + x
+     0が表示されるようにする。
      if wday_num >= 7
       wday_num = wday_num -7
      end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday => wdays[wday_num ] }
+      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday => wdays[wday_num ] } 
+      wday はindex.htmlの<%= day[:wday]  %>のwday と同じにする必要がする。wday_numは40行目。今日の日付。（Date.today.wdayを代入）
 
       @week_days.push(days)
 # これも繰り返し処理。7回。= { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans, :wday=> }　={はハッシュ　.manthは ～の9月。
